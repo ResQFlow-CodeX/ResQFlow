@@ -41,3 +41,5 @@ The backend (uvicorn) must be running at the same time.
 
 ## Verification
 From `backend/`, run `python -m pytest -v`. The v6.1 regression suite includes campus-scoped disasters, inventory capacity, donation crediting, transfer reservation and exactly-once dispatch/receipt accounting.
+# ResQFlow
+A disaster response and resource coordination platform built with React and FastAPI.
