@@ -1,45 +1,112 @@
-# ResQFlow v6.1 prototype
-```
-resqflow/
-  docs/API_CONTRACT.md   # shared contract (frontend + backend)
-  backend/               # FastAPI + SQLAlchemy (SQLite now, PostgreSQL later)
-    database.py  models.py  seed.py  requirements.txt
-    engine.py  test_engine.py   # Module 2: decision engine + tests (run: pytest -v)
-    main.py  test_api.py  test_api_extra.py   # Modules 3 and 6: API + tests
-    routing.py  test_routing.py # Module 5: OSRM road routing with offline fallback
-  frontend/              # React: sidebar app with Overview, Campuses, Requests, Donors, Reports
-```
-## Run
-```
-cd backend
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-python seed.py
+# ResQFlow 🚨
+### Intelligent Disaster Response & Resource Coordination
+
+ResQFlow is a disaster management prototype designed to improve emergency response through real-time vehicle tracking, resource monitoring, and adaptive route planning.
+
+During disasters, coordinating emergency vehicles, relief resources, and affected locations can be challenging. ResQFlow aims to simplify these operations by providing a centralized platform that helps responders make faster and more informed decisions.
+
+## 🌟 Key Features
+
+- **Live Vehicle Tracking:** Monitor emergency vehicles using real-time GPS coordinates from driver devices.
+- **Resource Monitoring:** Track resource availability and identify shortages at relief camps.
+- **Smart Resource Allocation:** Coordinate emergency resource transfers between locations.
+- **Dynamic Route Planning:** Identify alternative routes when roadblocks or disruptions affect existing routes.
+- **Disaster Simulation:** Simulate disaster scenarios and observe resource shortages, vehicle movements, and response coordination.
+- **Response Comparison:** Compare conventional manual coordination with ResQFlow-assisted response workflows.
+
+## 🎯 Problem Statement
+
+Disaster response operations often face challenges such as:
+- Delayed emergency vehicle coordination.
+- Limited visibility into resource availability.
+- Difficulty identifying relief camp shortages.
+- Road disruptions affecting emergency transportation.
+- Inefficient communication between response teams.
+
+## 💡 Our Solution
+
+ResQFlow provides a centralized disaster response interface that connects vehicle tracking, resource coordination, and route planning.
+
+The prototype demonstrates how real-time information and coordinated decision-making can support more efficient disaster response operations.
+
+## 🛠️ Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| React | Frontend interface |
+| Vite | Development and build tool |
+| Tailwind CSS | UI styling |
+| Node.js | Backend runtime |
+| Express.js | Server framework |
+| Socket.IO | Real-time communication |
+| Python | Supporting application components |
+| Geolocation API | Real phone GPS tracking |
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js
+- npm
+- Python 3 (for Python components)
+
+### Installation
+
+```bash
+git clone https://github.com/Moulya-k-m/IDEATHON.git
+cd IDEATHON
+npm install
 ```
 
-## Start the API
-```
-uvicorn main:app --reload      # then open http://127.0.0.1:8000/docs
+### Run the Frontend
+
+```bash
+npm run dev
 ```
 
-## Start the frontend (second terminal window)
-```
-cd frontend
-npm install        # first time only
-npm run dev        # then open http://localhost:5173
-```
-The backend (uvicorn) must be running at the same time.
+### Run the Real-Time Backend
 
-## v6.1 notes
-- Water inventory has per-campus storage capacity checks. Stock edits, donations and inbound transfers cannot exceed capacity.
-- Donations are credited to the selected/redirected campus immediately; over-capacity offers are rejected with the available space.
-- Campus inventory includes an instant one-hour consumption simulation control; the backend subtracts the current consumption rate and never allows stock below zero.
-- Transfers reserve approved donor stock, debit it once at dispatch, and credit the receiver once at receipt. Dispatch and receipt timestamps are stored.
-- Disaster simulation accepts `campus_id` and `disaster_type` (`flood`, `earthquake`, `cyclone`, `drought`). Only that campus is affected. The no-body endpoint remains supported as the original Campus A flood demo.
-- OSRM routing and its offline estimate fallback remain in place. Transfer records expose route, distance, ETA, dispatch time and estimated arrival.
-- The backend adds lightweight additive SQLite column migrations at startup for existing v6 databases. Legacy water rows receive a conservative demo storage headroom during migration because v6 did not store capacities.
+```bash
+node resqflow-realtime-server.cjs
+```
 
-## Verification
-From `backend/`, run `python -m pytest -v`. The v6.1 regression suite includes campus-scoped disasters, inventory capacity, donation crediting, transfer reservation and exactly-once dispatch/receipt accounting.
-# ResQFlow
-A disaster response and resource coordination platform built with React and FastAPI.
+Open the local URL displayed by Vite in your browser.
+
+> Run the frontend and backend in separate terminals. Ensure the Socket.IO server is running for real-time tracking features.
+
+## 📍 Live GPS Tracking
+
+ResQFlow supports real phone location tracking through the browser's Geolocation API.
+
+For GPS access:
+- Open Driver Web on a GPS-enabled device.
+- Allow location permission.
+- Use HTTPS or localhost for secure geolocation access.
+- Keep the device location enabled.
+
+## 🧪 Prototype Demonstration
+
+The prototype supports:
+- Disaster scenario simulation.
+- Resource shortage identification.
+- Emergency vehicle dispatch.
+- Live driver location updates.
+- Route adaptation during road disruptions.
+- Comparison of manual and coordinated response workflows.
+
+## 🔮 Future Scope
+
+- Integration with live disaster and weather data.
+- AI-assisted disaster impact prediction.
+- Automated resource allocation recommendations.
+- Integration with emergency services.
+- Advanced road network and traffic analysis.
+- Multi-disaster response support.
+
+## 👥 Team
+
+**CodeX**  
+Ideathon 2026
+
+---
+
+*ResQFlow — Connecting resources, routes, and responders when every second matters.*
