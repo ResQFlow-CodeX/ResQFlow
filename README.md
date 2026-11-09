@@ -52,8 +52,8 @@ The prototype demonstrates how real-time information and coordinated decision-ma
 ### Installation
 
 ```bash
-git clone https://github.com/Moulya-k-m/IDEATHON.git
-cd IDEATHON
+git clone https://github.com/Yaswanth-Naidu07/ResQFlow.git
+cd ResQFlow
 npm install
 ```
 
