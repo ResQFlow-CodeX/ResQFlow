@@ -101,6 +101,10 @@ The prototype supports:
 - Integration with emergency services.
 - Advanced road network and traffic analysis.
 - Multi-disaster response support.
+- Volunteer and NGO coordination.
+- Multilingual interface.
+
+
 
 ## 👥 Team
 
